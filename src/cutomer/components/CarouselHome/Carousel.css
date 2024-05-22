@@ -1,0 +1,5 @@
+.carousel-image {
+    width: 1800px; /* Set the desired width */
+    height: 700px; /* Set the desired height */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+}
