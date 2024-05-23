@@ -8,7 +8,7 @@ import './Carousel.css';
 const MainCarousel = () => {
     const items = mainCarouselData.map((item) => (
         <img
-            className='cursor-pointer carousel-image' // Apply the CSS class
+            className='cursor-pointer carousel-image -z-10' // Apply the CSS class
             role='presentation'
             src={item.image}
             alt=""
