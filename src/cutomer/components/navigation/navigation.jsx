@@ -2,6 +2,7 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useNavigate } from 'react-router-dom'
 
 const navigation = {
   categories: [
@@ -132,6 +133,21 @@ function classNames(...classes) {
 
 export default function Navigation() {
   const [open, setOpen] = useState(false)
+  const navigate=useNavigate();
+
+  const handleOpen = () => {
+    setOpen(true)
+  }
+
+  const handleClose = () => {
+    setOpen(false)
+  }
+
+  const handleCategoryClick = (category, section, item) => {
+    navigate(`/${category.id}/${section.id}/${item.id}`);
+  
+  };
+  
 
   return (
     <div className="bg-white z-50 relative"> {/* Add relative positioning and z-index */}
@@ -223,7 +239,14 @@ export default function Navigation() {
                             >
                               {section.items.map((item) => (
                                 <li key={item.name} className="flow-root">
-                                  <a href={item.href} className="-m-2 block p-2 text-gray-500">
+                                  <a href={item.href} className="-m-2 block p-2 text-gray-500"
+                                   onClick={() =>
+                                    handleCategoryClick(
+                                      category,
+                                      section,
+                                      item
+                                    )
+                                  }>
                                     {item.name}
                                   </a>
                                 </li>
@@ -371,9 +394,20 @@ export default function Navigation() {
                                           >
                                             {section.items.map((item) => (
                                               <li key={item.name} className="flex">
-                                                <a href={item.href} className="hover:text-gray-800">
+                                               <p
+                                               onClick={()=>
+                                                handleCategoryClick(
+                                                  category, 
+                                                  section,
+                                                  item
+                                          
+                                                )
+                                               }
+                                               className='cursor-pointer hover:text-gray-800'
+                                               >
+
                                                   {item.name}
-                                                </a>
+                                                  </p>
                                               </li>
                                             ))}
                                           </ul>

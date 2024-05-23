@@ -2,8 +2,14 @@ import React from 'react'
 import CartItem from './CartItem'
 import { Button } from '@mui/material'
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
+  const navigate= useNavigate();
+
+  const handleCheckout=()=>{
+    navigate("/checkout/?=step=2")
+  }
   return (
     <div className="mt-10">
       <div className='lg:grid grid-cols-3 lg:px-16 relative'>
@@ -40,9 +46,9 @@ const Cart = () => {
 </div>
 <div className="mt-5"> {/* Add margin-top here */}
 
-<Button variant='contained' sx={{ px: "2rem", py: "1rem", bgcolor: "#9155fd", width: "100%" }}>
+<Button onClick={handleCheckout} variant='contained' sx={{ px: "2rem", py: "1rem", bgcolor: "#9155fd", width: "100%" }}>
                                     <AttachMoneyIcon sx={{ mr: 1 }} />
-                                    Add To Cart
+                                   Checkout
                                 </Button>
                                 </div>
 
